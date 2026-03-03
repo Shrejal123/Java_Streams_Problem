@@ -13,7 +13,9 @@ public class Day4 {
         empList.add(new Employee("Shrejal",2,"CS",290000,"f",2025,24));
         empList.add(new Employee("Harsh",3,"IT",67230,"m",2020,26));
         empList.add(new Employee("komal",4,"HR",27432,"f",2021,24));
-        empList.add(new Employee("Samer",7,"IT",78999,"f",2015,30));
+        empList.add(new Employee("Samer",7,"IT",78999,"m",2015,30));
+        empList.add(new Employee("Sahil",8,"IT",78999,"m",2015,30));
+
 
     }
 
@@ -54,7 +56,9 @@ public class Day4 {
 
     //5.
     public void displayNameAgeGreater(){
-        empList.stream().filter(e->e.age()>24).forEach(System.out::println);
+        empList.stream()
+                .filter(e->e.age()>24)
+                .forEach(System.out::println);
     }
 
     //6.
@@ -67,14 +71,41 @@ public class Day4 {
     }
 
     //7.
-    public void averageAgeOfMaleAndFemale(){
+    public void averageAgeOfMaleAndFemaleInOrganization(){
         Map<String,Double> avg = empList.stream()
-                .collect(Collectors.groupingBy(Employee::gender,Collectors.averagingInt(Employee::age)));
-        System.out.println(avg);
+                .collect(Collectors.groupingBy
+                        (Employee::gender,Collectors.averagingInt(Employee::age)));
+        System.out.println("avg "+avg);
 
     }
 
+    //8.
+    public void averageAgeOfMaleAndFemaleEmployee(){
+        Map<String,Map<String,Double>> avgAge = empList.stream()
+                .collect(Collectors.groupingBy(Employee::deptName,
+                        Collectors.groupingBy(Employee::gender,Collectors.averagingInt(Employee::age))));
+        System.out.println("avgAge " +avgAge);
+    }
 
+    //9.  Find longest serving employees in the organization.
+    public void longestServing(){
+       Optional<Employee> ls= empList.stream()
+                .sorted(Comparator.comparingInt(Employee::yearOfJoining)).findFirst();
+        System.out.println("Longest serving employee "+ls);
+    }
+
+    //10. Find all longest serving employing in the organisation
+    public void allLongestServing(){
+        int minYear= empList.stream()
+                .mapToInt(Employee::yearOfJoining)
+                .min()
+                .orElse(0);
+
+        empList.stream()
+                .filter(e->e.yearOfJoining()==minYear)
+                .forEach(System.out::println);
+
+    }
 
 
 
@@ -90,6 +121,9 @@ public class Day4 {
         result.PrintDistinctDepartmentName();
         result.displayNameAgeGreater();
         result.printMaxAgeEmployee();
+        result.averageAgeOfMaleAndFemaleEmployee();
+        result.averageAgeOfMaleAndFemaleInOrganization();
+        result.longestServing();
 
     }
 }
