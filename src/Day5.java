@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 record Employee1(String name, int id, String deptName, long salary, String gender, int yearOfJoining, int age){
@@ -92,7 +93,48 @@ public class Day5{
                 .max(Map.Entry.comparingByValue())
                 .get();
         System.out.println(map);
+
     }
+
+    //7. Find the sum of digits of no
+     public void sumOfDigits(){
+        int num=12345;
+        int sum=String.valueOf(num)
+                 .chars()
+                .peek(System.out::println)
+                 .map(c->c-'0').sum();
+         System.out.println(sum);
+     }
+
+     //8. Find the factorial of number
+     public void calFactorial(){
+        int n=5;
+        int fact= IntStream.rangeClosed(1,n)
+                .reduce(1,(a,b)->a*b);
+         System.out.println(fact);
+     }
+
+     //9. Count how many numbers are divisible by 3 between 1–200
+     public void countNumber(){
+        long count = IntStream.rangeClosed(1,200)
+                .filter(n->n%3==0)
+                .count();
+         System.out.println(count);
+     }
+
+     //10.Find the maximum no in list
+     public void maxNoList() {
+         List<Integer> nums = List.of(10, 45, 2, 78, 33);
+         int maxElement = nums.stream().mapToInt(n -> n).max().orElse(0);
+         System.out.println(maxElement);
+
+     }
+
+
+
+
+
+
 
 
 
@@ -104,6 +146,11 @@ public class Day5{
         ans.youngestEmployeeEachDepartment();
         ans.AgeGreaterThan30AndLessThan31();
         ans.deptHighestEmployee();
+        ans.calFactorial();
+        ans.countNumber();
+        ans.maxNoList();
+        System.out.println("nurebj");
+        ans.sumOfDigits();
     }
 
 
