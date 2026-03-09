@@ -77,10 +77,19 @@ public class Day7 {
 
     //10.
     public void convertIntoSquares(){
-        List<Integer> sq=ls.stream()
-                .mapToInt(n->n)
+        List<Integer>sq = ls.stream()
                 .map(n->n*n)
+                .toList();
+        System.out.println("Square "+sq);
 
+    }
+
+    //11.
+    public void findFirst(){
+       int n = ls.stream()
+               .findFirst()
+               .orElse(0);
+        System.out.println(n);
     }
     static void main() {
         Day7 ans = new Day7();
@@ -93,6 +102,8 @@ public class Day7 {
         ans.checkListContainSpecificEle();
         ans.filterEvenNumber();
         ans.oddNumber();
+        ans.convertIntoSquares();
+        ans.findFirst();
 
     }
 }
