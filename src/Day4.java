@@ -109,11 +109,6 @@ public class Day4 {
 
 
 
-
-
-
-
-
     public static void main(String[] args){
         Day4 result = new Day4();
         result.countEmployeeByGender();

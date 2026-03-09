@@ -100,9 +100,9 @@ public class Day5{
      public void sumOfDigits(){
         int num=12345;
         int sum=String.valueOf(num)
-                 .chars()
+                .chars()
                 .peek(System.out::println)
-                 .map(c->c-'0').sum();
+                .map(c->c-'0').sum();
          System.out.println(sum);
      }
 
@@ -125,7 +125,9 @@ public class Day5{
      //10.Find the maximum no in list
      public void maxNoList() {
          List<Integer> nums = List.of(10, 45, 2, 78, 33);
-         int maxElement = nums.stream().mapToInt(n -> n).max().orElse(0);
+         int maxElement = nums.stream()
+                              .mapToInt(n -> n)
+                              .max().orElse(0);
          System.out.println(maxElement);
 
      }
