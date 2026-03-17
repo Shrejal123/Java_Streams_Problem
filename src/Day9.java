@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class Day9 {
     List<Integer> num = List.of(2,3,3,9,2,5,9,6,7,8);
     List<String> fruits = List.of("apple","banana","grapes","oranges","guava","apple");
-    List<String> fruits1 = List.of("pineapple","pears","pomogernate");
+    List<String> fruits1 = List.of("pineapple","pears","pomegranate");
 
     //1.
     public void longestString(){
