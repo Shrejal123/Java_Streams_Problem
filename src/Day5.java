@@ -102,7 +102,8 @@ public class Day5{
         int sum=String.valueOf(num)
                 .chars()
                 .peek(System.out::println)
-                .map(c->c-'0').sum();
+                .map(c->c-'0')
+                .sum();
          System.out.println(sum);
      }
 

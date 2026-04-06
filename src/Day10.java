@@ -6,7 +6,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Day10 {
-      List<String> ls = List.of("apple","banana","apple","grapes","oranges","apple","mango","grapes");
+      List<String> ls = List.of("apple",
+              "banana","apple","grapes",
+              "oranges","apple","mango","grapes");
+
       String input = "hello";
 
 

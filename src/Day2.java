@@ -13,7 +13,8 @@ public class Day2 {
                 .collect(Collectors.groupingBy(n -> n, LinkedHashMap::new, Collectors.counting()))
                 .entrySet().stream()
                 .filter(e -> e.getValue() > 1)
-                .map(Map.Entry::getKey).collect(Collectors.toSet());
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toSet());
         System.out.println("Print duplicates: " + duplicates);
 
         //2. find first non-repeating integers of arrays
@@ -24,10 +25,14 @@ public class Day2 {
         System.out.println("First non repeating: " + res);
 
         //3. Find first Repeated Element
-        int number = Arrays.stream(arr).boxed()
+        int number = Arrays.stream(arr)
+                .boxed()
                 .collect(Collectors.groupingBy(n -> n, LinkedHashMap::new, Collectors.counting()))
                 .entrySet().stream()
-                .filter(e -> e.getValue() > 1).map(Map.Entry::getKey).findFirst().get();
+                .filter(e -> e.getValue() > 1)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .get();
         System.out.println("Repeated element: " + number);
 
 
@@ -50,9 +55,11 @@ public class Day2 {
         //perform the stream operation on map
         long maxFrequency = resultMap.entrySet().stream()
                 .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getValue).orElse(0L);
+                .map(Map.Entry::getValue)
+                .orElse(0L);
 
-        List<Integer> list =  map.entrySet()
+        List<Integer> list =
+                map.entrySet()
                 .stream()
                 .filter(i -> i.getValue() == maxFrequency)
                 .map(Map.Entry::getKey)

@@ -89,8 +89,9 @@ public class Day4 {
 
     //9.  Find longest serving employees in the organization.
     public void longestServing(){
-       Optional<Employee> ls= empList.stream()
-                .sorted(Comparator.comparingInt(Employee::yearOfJoining)).findFirst();
+       Optional<Employee> ls=
+               empList.stream()
+                      .sorted(Comparator.comparingInt(Employee::yearOfJoining)).findFirst();
         System.out.println("Longest serving employee "+ls);
     }
 
